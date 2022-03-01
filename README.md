@@ -1,2 +1,2 @@
-# project one: Expense Reimbursement System	
+# Project one: Expense Reimbursement System	
 #  - Spring Boot Java SRE/Devops
