@@ -1,0 +1,20 @@
+version: "3.9"
+
+networks:
+  project-one-network:
+
+services:
+  reimbapi:
+    image: olvmky/reimbapi
+    ports:
+      - 8888:8888
+    container_name: reimbapi
+    environment:
+      - MAIL_URL=http://emailapi:8088/mail
+    networks:
+      - project-one-network
+  emailapi:
+    image: olvmky/emailapi
+    container_name: emailapi
+    networks:
+      - project-one-network
