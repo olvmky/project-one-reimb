@@ -4,6 +4,7 @@ pipeline {
       steps {
         withMaven {
           sh 'mvn test'
+          
         }
       }
   }
