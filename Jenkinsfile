@@ -1,12 +1,20 @@
 pipeline {
   agent any
-  stages { 
+  stages {
     stage('Build') {
-        steps {
-            withMaven {
-                sh 'mvn test'
-            }
+      steps {
+        withMaven() {
+          sh 'mvn test'
         }
+
+      }
     }
+
+    stage('CheckingDocker') {
+      steps {
+        sh 'docker images'
+      }
+    }
+
   }
 }
