@@ -3,7 +3,9 @@ pipeline {
   stages { 
     stage('Build') {
         steps {
-          sh 'echo "hello"'
+            withMaven {
+                sh 'mvn test'
+            }
         }
     }
   }
