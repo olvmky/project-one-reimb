@@ -8,7 +8,6 @@ pipeline {
         withMaven() {
           sh 'mvn clean package'
         }
-
       }
   }
 }
