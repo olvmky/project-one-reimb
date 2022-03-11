@@ -2,7 +2,7 @@ pipeline {
   agent any
   stage('Build') {
       steps {
-        withMaven() {
+        withMaven {
           sh 'mvn test'
         }
       }
