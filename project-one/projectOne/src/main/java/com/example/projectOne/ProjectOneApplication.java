@@ -1,9 +1,5 @@
 package com.example.projectOne;
 
-import com.example.projectOne.DAO.UserRepository;
-import com.example.projectOne.models.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -21,11 +17,4 @@ public class ProjectOneApplication {
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
-
-//	@Bean
-//	public WebClient.Builder getWebClient() {
-//		return WebClient.builder();
-//	}
-
-
 }

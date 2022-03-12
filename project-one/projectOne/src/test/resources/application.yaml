@@ -6,8 +6,8 @@ spring:
     name: ProjectOne
   datasource:
     username: postgres
-    password: 123456
-    url: jdbc:postgresql://35.223.115.37/postgres
+    password: 12345
+    url: jdbc:postgresql://34.136.65.106:5432/postgres
     driver-class-name: org.postgresql.Driver
     jpa:
       properties:
@@ -21,9 +21,6 @@ spring:
 
   mustache:
     check-template-location: false
-
-
-
 
 server:
   port: 8888
