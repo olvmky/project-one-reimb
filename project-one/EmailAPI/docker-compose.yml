@@ -4,17 +4,22 @@ networks:
   project-one-network:
 
 services:
-  reimbapi:
-    image: olvmky/reimbapi
+  p1-reimb-api:
+    image: olvmky/p1-reimb-api
     ports:
-      - 8888:8888
-    container_name: reimbapi
+      - '8888:8888'
+    container_name: p1-reimb-api
     environment:
-      - MAIL_URL=http://emailapi:8088/mail
+      - MAIL_URL=http:/p1-email-api:8088/mail
     networks:
       - project-one-network
-  emailapi:
-    image: olvmky/emailapi
-    container_name: emailapi
+    logging:
+      driver: json-file
+      options:
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+
+  p1-email-api:
+    image: olvmky/p1-email-api
+    container_name: p1-email-api
     networks:
       - project-one-network

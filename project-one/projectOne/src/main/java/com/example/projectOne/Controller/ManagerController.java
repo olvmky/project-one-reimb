@@ -31,8 +31,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("manager")
-@PreAuthorize("hasAuthority('MANAGER')")
-//@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("hasAuthority('MANAGER')")
 public class ManagerController {
 
     //api.config.mail-url will become the one spring tries to wire

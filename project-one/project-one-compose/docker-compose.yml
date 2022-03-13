@@ -7,7 +7,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     ports:
-      - '3000:3000'
+      - 3000:3000
     container_name: grafana
     depends_on:
       - loki
@@ -15,7 +15,7 @@ services:
   loki:
     image: grafana/loki:latest
     ports:
-      - '3100:3100'
+      - 3100:3100
     container_name: loki
 
   promtail:
@@ -29,7 +29,7 @@ services:
   p1-reimb-api:
     image: olvmky/p1-reimb-api
     ports:
-      - '8888:8888'
+      - 8888:8888
     container_name: p1-reimb-api
     environment:
       - MAIL_URL=http:/p1-email-api:8088/mail
@@ -42,6 +42,8 @@ services:
 
   p1-email-api:
     image: olvmky/p1-email-api
+    ports:
+      - 8088:8088
     container_name: p1-email-api
     networks:
       - project-one-network

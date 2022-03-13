@@ -7,7 +7,7 @@ spring:
   datasource:
     username: postgres
     password: 123456
-    url: jdbc:postgresql://35.223.115.37/postgres
+    url: jdbc:postgresql://34.135.186.138:5432/postgres
     driver-class-name: org.postgresql.Driver
     jpa:
       properties:
@@ -25,4 +25,6 @@ server:
 jwt:
   secret: token_secret
   expiry: 360000
+
+
 

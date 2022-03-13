@@ -29,7 +29,6 @@ import java.util.List;
 @RestController
 @RequestMapping("employee")
 //@PreAuthorize("isAuthenticated()")
-@PreAuthorize("hasAuthority('EMPLOYEE')")
 public class EmployeeController {
     @Value("${server.port}")
     int port;
