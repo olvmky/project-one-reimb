@@ -40,6 +40,12 @@ pipeline {
                }
            }
        }
+    stage('Docker Deliver') {
+      steps {
+        docker.withRegistry('',dockerHubCreds) {
+          dockerImage.push()
+        }
+      }
+    }
   
-  }
 }
