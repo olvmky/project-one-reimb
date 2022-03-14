@@ -8,5 +8,20 @@ pipeline {
         }
       }
     }
+    
+    stage('Build') {
+          when {
+             branch 'main'
+          }
+          steps {
+            withMaven {
+
+              sh 'mvn -f projectOne/pom.xml clean install'
+              sh 'mvn -f projectOne/pom.xml clean package -DskipTests'
+
+            }
+          }
+    }
+  
   }
 }
