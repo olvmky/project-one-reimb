@@ -3,6 +3,7 @@ pipeline {
         registry = 'olvmky/reimb-api'
         dockerHubCreds = 'docker_hub'
         dockerImage = ''
+        deploymentFile = 'projectOne/k8s/deployment.yml'
   }
   
   agent any
@@ -53,26 +54,6 @@ pipeline {
         }
       }
     }
-//     stage('Wait for approval') {
-//             when {
-//                 branch 'main'
-//             }
-//             steps {
-//                 script {
-//                     try {
-//                         timeout(time: 1, unit: 'MINUTES') {
-//                             approved = input message: 'Deploy to production?', ok: 'Continue',
-//                                                parameters: [choice(name: 'approved', choices: 'Yes\nNo', description: 'Deploy build to production')]
-//                             if(approved != 'Yes') {
-//                                 error('Build did not pass approval')
-//                             }
-//                         }
-//                     } catch(error) {
-//                         error('Build failed because timeout was exceeded')
-//                     }
-//                 }
-//             }
-//     }
 
     stage('Deploy to GKE') {
             when {
@@ -92,10 +73,10 @@ pipeline {
 
                cleanWs()
 
-//                discordSend description: "Build #$currentBuild.number",
-//                     link: BUILD_URL, result: currentBuild.currentResult,
-//                     title: JOB_NAME,
-//                     webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
+               discordSend description: "Build #$currentBuild.number",
+                    link: BUILD_URL, result: currentBuild.currentResult,
+                    title: JOB_NAME,
+                    webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
             }
     }
 
