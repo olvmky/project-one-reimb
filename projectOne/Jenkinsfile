@@ -28,6 +28,20 @@ pipeline {
             }
           }
     }
+    
+    stage('Docker Build') {
+           when {
+               branch 'main'
+           }
+           steps {
+            dir('projectOne/') {
+               script {
+                  echo "$registry:$currentBuild.number"
+                  dockerImage = docker.build "$registry"
+               }
+            }
+           }
+       }
   
   }
 }
