@@ -37,20 +37,9 @@ metadata:
 spec:
   selector:
     app: project1-reimb-api
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 8888
       targetPort: 8888
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: reimb-api-monitor
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/managed-by: graphite-jenkins-gke
-  endpoints:
-    - port: project1-reimb-api
-      path: "/actuator/prometheus"
+
 
