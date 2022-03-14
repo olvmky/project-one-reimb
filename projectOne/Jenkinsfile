@@ -34,12 +34,10 @@ pipeline {
                branch 'main'
            }
            steps {
-             dir('projectOne/') {
                script {
                   echo "$registry:$currentBuild.number"
                   dockerImage = docker.build "$registry"
                }
-             }
            }
        }
   
