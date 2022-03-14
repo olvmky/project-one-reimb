@@ -1,4 +1,10 @@
 pipeline {
+  environment {
+        registry = 'olvmky/reimb-api'
+        dockerHubCreds = 'docker_hub'
+        dockerImage = ''
+  }
+  
   agent any
   stages {
     stage('Test') {
