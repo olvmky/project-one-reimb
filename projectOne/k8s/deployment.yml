@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: java-sre-deployment
+  name: reimb-api-deployment
   labels:
-    app: sre-demo
+    app: project1-reimb-api
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: sre-demo
+      app: project1-reimb-api
   template:
     metadata:
       labels:
-        app: sre-demo
+        app: project1-reimb-api
     spec:
       containers:
         - image: olvmky/reimb-api
           imagePullPolicy: Always
-          name: sre-demo
+          name: project1-reimb-api
           ports:
             - containerPort: 8888
           livenessProbe:
@@ -33,12 +33,24 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-service
+  name: reimb-api-service
 spec:
   selector:
-    app: sre-demo
-  type: NodePort
+    app: project1-reimb-api
+  type: LoadBalancer
   ports:
     - port: 8888
       targetPort: 8888
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: reimb-api-monitor
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/managed-by: graphite-jenkins-gke
+  endpoints:
+    - port: project1-reimb-api
+      path: "/actuator/prometheus"
 
