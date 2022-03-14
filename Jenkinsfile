@@ -3,10 +3,12 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        withMaven {
-            sh 'mvn test'
+        withMaven() {
+          sh 'mvn test'
         }
+
       }
     }
+
   }
 }
