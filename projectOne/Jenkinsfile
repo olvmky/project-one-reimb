@@ -41,9 +41,14 @@ pipeline {
            }
        }
     stage('Docker Deliver') {
+      when {
+        branch 'main'
+      }
       steps {
-        docker.withRegistry('',dockerHubCreds) {
-          dockerImage.push()
+        script {
+          docker.withRegistry('',dockerHubCreds) {
+                    dockerImage.push()
+          }
         }
       }
     }
