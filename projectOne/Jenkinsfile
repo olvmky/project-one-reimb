@@ -81,18 +81,18 @@ pipeline {
             steps{
                sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./projectOne/k8s/deployment.yml'
                sh 'cat ./projectOne/k8s/deployment.yml'
-                step([$class: 'KubernetesEngineBuilder',
+               step([$class: 'KubernetesEngineBuilder',
                     projectId: 'active-road-343813',
                     clusterName: 'active-road-343813-gke',
                     zone: 'us-central1',
                     manifestPattern: 'projectOne/k8s/',
                     credentialsId: 'active-road-343813',
                     verifyDeployments: true
-                ])
+               ])
 
-                cleanWs()
+               cleanWs()
 
-                discordSend description: "Build #$currentBuild.number",
+               discordSend description: "Build #$currentBuild.number",
                     link: BUILD_URL, result: currentBuild.currentResult,
                     title: JOB_NAME,
                     webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
