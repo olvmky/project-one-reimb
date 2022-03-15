@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.github.database-rider</groupId>
 			<artifactId>rider-spring</artifactId>
-			<version>1.32.2</version>
+			<version>1.32.3</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -89,6 +89,13 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.9.1.2184</version>
 		</dependency>
 	</dependencies>
 
