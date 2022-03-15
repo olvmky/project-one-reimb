@@ -22,10 +22,8 @@ pipeline {
           }
           steps {
             withMaven {
-
               sh 'mvn -f projectOne/pom.xml clean install'
               sh 'mvn -f projectOne/pom.xml clean package -DskipTests'
-
             }
           }
     }
@@ -54,6 +52,14 @@ pipeline {
         }
       }
     }
+
+//     stage('Scan') {
+//       steps {
+//         withSonarQubeEnv(installationName: 'sq1') {
+//           sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+//         }
+//       }
+//     }
 
     stage('Deploy to GKE') {
             when {
