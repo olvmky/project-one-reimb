@@ -6,12 +6,13 @@ pipeline {
         deploymentFile = 'projectOne/k8s/deployment.yml'
   }
   
-  agent {
-    docker {
-      image 'maven:3.8.4-openjdk-8'
-      args '-v $HOME/.m2:/root/.m2'
-    }
-  }
+  agent any
+//   {
+//     docker {
+//       image 'maven:3.8.4-openjdk-8'
+//       args '-v $HOME/.m2:/root/.m2'
+//     }
+//   }
   stages {
 //     stage('Quality Gate') {
 //       steps {
