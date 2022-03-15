@@ -7,12 +7,6 @@ pipeline {
   }
   
   agent any
-//   {
-//     docker {
-//       image 'maven:3.8.4-openjdk-8'
-//       args '-v $HOME/.m2:/root/.m2'
-//     }
-//   }
   stages {
 //     stage('Quality Gate') {
 //       steps {
@@ -94,10 +88,10 @@ pipeline {
 
                cleanWs()
 
-               discordSend description: "Build #$currentBuild.number",
-                    link: BUILD_URL, result: currentBuild.currentResult,
-                    title: JOB_NAME,
-                    webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
+//                discordSend description: "Build #$currentBuild.number",
+//                     link: BUILD_URL, result: currentBuild.currentResult,
+//                     title: JOB_NAME,
+//                     webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
             }
     }
 
