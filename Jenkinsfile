@@ -3,7 +3,7 @@ pipeline {
         registry = 'olvmky/reimb-api'
         dockerHubCreds = 'docker_hub'
         dockerImage = ''
-        deploymentFile = 'projectOne/k8s/deployment.yml'
+        deploymentFile = 'k8s/deployment.yml'
   }
   
   agent any
@@ -44,7 +44,7 @@ pipeline {
     stage('Test') {
       steps {
         withMaven {
-            sh 'mvn -f projectOne/pom.xml test'
+            sh 'mvn -f pom.xml test'
         }
       }
     }
@@ -55,8 +55,8 @@ pipeline {
           }
           steps {
             withMaven {
-              sh 'mvn -f projectOne/pom.xml clean install'
-              sh 'mvn -f projectOne/pom.xml clean package -DskipTests'
+              sh 'mvn -f pom.xml clean install'
+              sh 'mvn -f pom.xml clean package -DskipTests'
             }
           }
     }
@@ -99,13 +99,13 @@ pipeline {
                 branch 'main'
             }
             steps{
-               sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./projectOne/k8s/deployment.yml'
-               sh 'cat ./projectOne/k8s/deployment.yml'
+               sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./k8s/deployment.yml'
+               sh 'cat ./k8s/deployment.yml'
                step([$class: 'KubernetesEngineBuilder',
                     projectId: 'active-road-343813',
                     clusterName: 'active-road-343813-gke',
                     zone: 'us-central1',
-                    manifestPattern: 'projectOne/k8s/',
+                    manifestPattern: 'k8s/',
                     credentialsId: 'active-road-343813',
                     verifyDeployments: true
                ])
