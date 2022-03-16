@@ -8,30 +8,30 @@ pipeline {
   
   agent any
   stages {
-            stage('Clone sources') {
-                steps {
-                    git url: 'https://github.com/olvmky/revature-project/projectOne'
-                }
-            }
-            stage('SonarQube analysis') {
-                steps {
-//                   def mvn = tool 'mvn';
-//                       withSonarQubeEnv() {
-//                         sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=project-one"
-//                       }
-                    withSonarQubeEnv('SonarQube') {
-                        sh "./gradlew sonarqube"
-                    }
-                }
-            }
-            stage("Quality gate") {
-                steps {
-                    waitForQualityGate abortPipeline: true
-                    withMaven {
-                                sh 'mvn clean package sonar:sonar'
-                    }
-                }
-            }
+//             stage('Clone sources') {
+//                 steps {
+//                     git url: 'https://github.com/olvmky/revature-project/projectOne'
+//                 }
+//             }
+//             stage('SonarQube analysis') {
+//                 steps {
+// //                   def mvn = tool 'mvn';
+// //                       withSonarQubeEnv() {
+// //                         sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=project-one"
+// //                       }
+//                     withSonarQubeEnv('SonarQube') {
+//                         sh "./gradlew sonarqube"
+//                     }
+//                 }
+//             }
+//             stage("Quality gate") {
+//                 steps {
+//                     waitForQualityGate abortPipeline: true
+//                     withMaven {
+//                                 sh 'mvn clean package sonar:sonar'
+//                     }
+//                 }
+//             }
 //     stage('Quality Gate') {
 //       steps {
 //         withSonarQubeEnv(credentialsId: 'b337c1d3dde15cd3f9706462f1a0697e75e8e1b2', installationName: 'sonarqube') {
