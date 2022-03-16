@@ -8,7 +8,6 @@ pipeline {
   
   agent any
   stages {
-    stages {
             stage('Clone sources') {
                 steps {
                     git url: 'https://github.com/tkgregory/sonarqube-jacoco-code-coverage.git'
@@ -26,7 +25,6 @@ pipeline {
                     waitForQualityGate abortPipeline: true
                 }
             }
-        }
 //     stage('Quality Gate') {
 //       steps {
 //         withSonarQubeEnv(credentialsId: 'b337c1d3dde15cd3f9706462f1a0697e75e8e1b2', installationName: 'sonarqube') {
