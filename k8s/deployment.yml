@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
         - image: olvmky/reimb-api
+          env:
+            - name: EMAIL_URL
+              value: http://35.202.242.227:8088
           imagePullPolicy: Always
           name: project1-reimb-api
           ports:
