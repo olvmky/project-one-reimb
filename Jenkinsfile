@@ -68,7 +68,7 @@ pipeline {
            steps {
                script {
                   echo "$registry:$currentBuild.number"
-                  dockerImage = docker.build ("$registry", "-f projectOne/Dockerfile .")
+                  dockerImage = docker.build ("$registry", "-f Dockerfile .")
                }
            }
        }
