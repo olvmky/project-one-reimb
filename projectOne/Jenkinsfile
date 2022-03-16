@@ -110,7 +110,6 @@ pipeline {
 //                     title: JOB_NAME,
 //                     webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
             }
+            }
     }
-
-
 }
