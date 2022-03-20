@@ -1,6 +1,4 @@
 
-7
-pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 p
@@ -14,7 +12,3 @@ B
 Dockerfile,6/6/6651ddff6eb82c840ced7c1dddee15c6e1913dd4
 B
 k8s/deployment.yml,3/4/34543600f8e48b7ceb358c53e2f43b8ed4abbbb7
-=
-Jenkinsfile-1,e/3/e39d758ebd731e84d5e0ae86f15021b27af99381
-;
-Jenkinsfile,0/c/0c2c5c506cef0ed2d3ad2b7e45e97980b66f5520
