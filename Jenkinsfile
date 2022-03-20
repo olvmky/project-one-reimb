@@ -1,9 +1,5 @@
 pipeline {
-  environment {
-    registry = 'javaSRE2022/test'
-    dockerHubCreds = 'docker_hub'
-    dockerImage = ''
-  }
+
   agent {
     kubernetes {
       label 'test-pod' 
