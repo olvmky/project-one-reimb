@@ -18,7 +18,7 @@ pipeline {
       steps {
         container('docker') {  
           script {
-            sh "docker build -t javaSRE2022/test ."
+            sh "docker build -t javasre2022/test ."
           }
         }
       }
