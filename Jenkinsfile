@@ -45,7 +45,6 @@ pipeline {
           }
         }
     }
-
       stage('Deploy to GKE') {
                  sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./k8s/deployment.yml'
                  sh 'cat ./k8s/deployment.yml'
