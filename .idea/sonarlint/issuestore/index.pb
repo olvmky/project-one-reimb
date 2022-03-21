@@ -12,5 +12,3 @@ B
 Dockerfile,6/6/6651ddff6eb82c840ced7c1dddee15c6e1913dd4
 B
 k8s/deployment.yml,3/4/34543600f8e48b7ceb358c53e2f43b8ed4abbbb7
-7
-pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
