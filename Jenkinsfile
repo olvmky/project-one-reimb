@@ -18,10 +18,8 @@ pipeline {
 
   stage('Build') {
             steps {
-              withMaven {
                 sh 'mvn -f pom.xml clean install'
                 sh 'mvn -f pom.xml clean package -DskipTests'
-              }
             }
    }
 
