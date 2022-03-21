@@ -47,7 +47,7 @@ pipeline {
         steps {
                  sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./k8s/deployment.yml'
                  sh 'cat ./k8s/deployment.yml'
-                 sh 'kubectl get pod'
+//                  sh 'kubectl get pod'
                  step([$class: 'KubernetesEngineBuilder',
                       projectId: 'projec-344323',
                       clusterName: 'cluster-test',
