@@ -46,6 +46,7 @@ pipeline {
         }
     }
       stage('Deploy to GKE') {
+        steps {
                  sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./k8s/deployment.yml'
                  sh 'cat ./k8s/deployment.yml'
                  sh 'kubectl get pod'
@@ -64,7 +65,7 @@ pipeline {
 //                       link: BUILD_URL, result: currentBuild.currentResult,
 //                       title: JOB_NAME,
 //                       webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
-//               }
+          }
       }
   }
 }
