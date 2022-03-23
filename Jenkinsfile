@@ -44,26 +44,20 @@ pipeline {
         }
     }
       stage('Deploy to GKE') {
-        steps {
-                 sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./k8s/deployment.yml'
-                 sh 'cat ./k8s/deployment.yml'
-//                  sh 'kubectl get pod'
-                 step([$class: 'KubernetesEngineBuilder',
-                      projectId: 'projec-344323',
-                      clusterName: 'cluster-test',
-                      zone: 'us-central1',
-                      manifestPattern: 'k8s/',
-                      credentialsId: 'projec-344323',
-                      verifyDeployments: true
-                 ])
-//
-                 cleanWs()
-//
-//                  discordSend description: "Build #$currentBuild.number",
-//                       link: BUILD_URL, result: currentBuild.currentResult,
-//                       title: JOB_NAME,
-//                       webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
-          }
+              steps {
+                withKubeConfig(credentialsId: 'ksa',serverUrl: ' https://34.66.168.93') {
+                  sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
+                  sh 'chmod u+x ./kubectl'
+                  sh './kubectl apply -f deployment.yml'
+                }
+
+                cleanWs()
+
+                discordSend description: "Build #$currentBuild.number",
+                  link: BUILD_URL, result: currentBuild.currentResult,
+                  title: JOB_NAME,
+                  webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
+              }
       }
   }
 }
