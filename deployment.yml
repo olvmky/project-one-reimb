@@ -16,7 +16,7 @@ spec:
       labels:
         app: project1-reimb-api
         role: backend
-        endv: production
+        env: production
     spec:
       containers:
         - image: olvmky/reimb-api
