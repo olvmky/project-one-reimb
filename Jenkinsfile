@@ -52,7 +52,7 @@ pipeline {
              sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
              sh 'chmod u+x ./kubectl'
              sh './kubectl apply -f deployment-canary.yml'
-             sh 'while true; do curl -ks https://`./kubectl get svc reimb-api-service -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version; sleep 1; done'
+             sh 'while true; do curl -ks https://`./kubectl get svc reimb-api-service -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version; sleep 3; done'
            }
 
            cleanWs()
