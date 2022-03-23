@@ -53,7 +53,7 @@ pipeline {
              sh 'chmod u+x ./kubectl'
              sh './kubectl apply -f deployment-canary.yml'
 //              sh 'while true; do curl -ks https://`./kubectl get svc reimb-api-service -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version; sleep 3; done'
-             sh 'export BACKEND_SERVICE_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}"  services reimb-api-service)
+             sh 'export BACKEND_SERVICE_IP=$(./kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}"  services reimb-api-service)
                  while true; do curl http://BACKEND_SERVICE_IP/version; sleep 3;  done'
            }
 
