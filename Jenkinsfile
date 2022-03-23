@@ -47,6 +47,9 @@ pipeline {
               steps {
                 withKubeConfig([credentialsId: 'ksa',serverUrl: 'https://34.66.168.93']) {
                   sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
+                  sh 'gcloud config set compute/zone us-central1-a'
+                  sh 'export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value project)'
+                  sh 'gcloud container clusters get-credentials jenkins'
                   sh 'chmod u+x ./kubectl'
                   sh './kubectl apply -f deployment.yml'
                 }
