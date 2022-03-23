@@ -44,21 +44,22 @@ pipeline {
           }
         }
     }
-      stage('Deploy to GKE') {
-              steps {
-                withKubeConfig([credentialsId: 'cluster-test',serverUrl: 'https://34.66.168.93',
+
+    stage('Deploy to GKE') {
+         steps {
+           withKubeConfig([credentialsId: 'cluster-test',serverUrl: 'https://34.66.168.93',
                                 caCertificate: '', clusterName:'jenkins']) {
-                  sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
-                  sh 'chmod u+x ./kubectl'
-                  sh './kubectl apply -f deployment.yml'
-                }
+             sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
+             sh 'chmod u+x ./kubectl'
+             sh './kubectl apply -f deployment.yml'
+           }
 
-                cleanWs()
+           cleanWs()
 
-                discordSend description: "Build #$currentBuild.number",
-                  link: BUILD_URL, result: currentBuild.currentResult,
-                  title: JOB_NAME,
-                  webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
+//                 discordSend description: "Build #$currentBuild.number",
+//                   link: BUILD_URL, result: currentBuild.currentResult,
+//                   title: JOB_NAME,
+//                   webhookURL: "https://discord.com/api/webhooks/946097550514061343/7IRGxvAsw24cbGPIHXE15gtxCvzQQtRl3e5DEcm7arQpC6x3cVJPXXWZo7UWHKyJumuW"
               }
       }
   }
