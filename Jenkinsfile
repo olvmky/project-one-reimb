@@ -52,8 +52,9 @@ pipeline {
              sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
              sh 'chmod u+x ./kubectl'
              sh './kubectl apply -f deployment-canary.yml'
-//              sh 'while true; do curl -ks https://`./kubectl get svc reimb-api-service -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version; sleep 3; done'
-             sh 'export BACKEND_SERVICE_IP=$(./kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}" svc reimb-api-service) while true; do curl http://BACKEND_SERVICE_IP/version; sleep 3;  done'
+             sh 'curl -ks https://`./kubectl get svc reimb-api-service -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version'
+             sh 'while true; do curl -ks https://`./kubectl get svc frontend -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version; sleep 1; done'
+//              sh 'export BACKEND_SERVICE_IP=$(./kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}" svc reimb-api-service) while true; do curl http://BACKEND_SERVICE_IP/version; sleep 3;  done'
            }
 
            cleanWs()

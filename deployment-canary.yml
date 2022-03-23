@@ -9,6 +9,7 @@ spec:
       app: project1-reimb-api
       role: backend
       env: canary
+      version: 1.0.0
   template:
     metadata:
       name: backend
@@ -16,6 +17,7 @@ spec:
         app: project1-reimb-api
         role: backend
         env: canary
+        version: 1.0.0
     spec:
       containers:
         - name: backend
