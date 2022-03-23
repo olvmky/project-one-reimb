@@ -9,6 +9,8 @@ spec:
   selector:
     matchLabels:
       app: project1-reimb-api
+      role: backend
+      env: production
   template:
     metadata:
       labels:
@@ -35,6 +37,7 @@ metadata:
   name: reimb-api-service
 spec:
   selector:
+    role: backend
     app: project1-reimb-api
   type: LoadBalancer
   ports:
