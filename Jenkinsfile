@@ -45,14 +45,14 @@ pipeline {
         }
     }
 
-    stage('Deploy to GKE') {
+    stage('Canary Deployment') {
          steps {
            withKubeConfig([credentialsId: 'cluster-test',serverUrl: 'https://34.66.168.93',
                                 caCertificate: '', clusterName:'jenkins']) {
              sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
              sh 'chmod u+x ./kubectl'
              sh './kubectl apply -f deployment-canary.yml'
-             sh 'while true; do curl -ks https://`kubectl get svc reimb-api-service -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version; sleep 1; done'
+             sh 'while true; do curl -ks https://`./kubectl get svc reimb-api-service -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version; sleep 1; done'
            }
 
            cleanWs()
