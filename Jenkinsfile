@@ -46,10 +46,11 @@ pipeline {
     }
       stage('Deploy to GKE') {
               steps {
-                withKubeConfig([credentialsId: 'ksa',serverUrl: 'https://34.66.168.93',
+                withKubeConfig([credentialsId: 'cluster-test',serverUrl: 'https://34.66.168.93',
                                 caCertificate: '', clusterName:'jenkins']) {
                   sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
                   sh 'chmod u+x ./kubectl'
+                  sh 'gcloud container clusters get-credentials '
                   sh './kubectl apply -f deployment.yml'
                 }
 
