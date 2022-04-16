@@ -11,4 +11,4 @@ Finance managers are authorized to approve and deny requests for expense reimbur
   - Script.sql - File to create the database tables
   - docker-compose.yml - Docker compose file for running the application in production 
   - Dockerfile: for docker running in Jenkins 
-  - Jenkinsfile: CICD pipelines
+  - Jenkinsfile: CICD pipelines for Jenkins
