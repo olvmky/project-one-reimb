@@ -1,5 +1,4 @@
-# Revature Project
-## Project One: Expense Reimbursement System - API 1
+## Expense Reimbursement System - API 1
   - Spring Boot Java SRE/Devops
 
 The Expense Reimbursement System will manage the process of reimbursing employees for expenses incurred while on company time. 
